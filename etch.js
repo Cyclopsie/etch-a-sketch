@@ -21,22 +21,35 @@ for(s = 0; s <= 256; s++) {
     if(s === 256) {
         console.log("16x16");
     } else {
-        gridMakingDiv();
-    }
+        gridB();
+    }   
     document.querySelector('.divContainer').style.gridTemplateColumns = "repeat(16, 1fr)";
 }
 }
+
 begin();
 
-
-
-
-
-
-
-
-
-
+function gridB() {
+    startGrid = document.createElement('div');
+    startGrid.classList.add('gridB');
+    divContainer.appendChild(startGrid);
+    startBorder();
+}
+//changing the style of each box
+function startBorder() {
+    document.querySelectorAll('.gridB').forEach(el => {
+        el.style.borderStyle = 'solid';
+        el.style.padding = '20px';
+        el.style.color = 'black';
+        el.style.margin = '10px';
+        
+    });
+}
+function hiddenStyle() {
+    document.querySelectorAll('.gridB').forEach(el => {
+        el.style.display = 'none';
+    });
+}
 
 
 //have to make a loop that inputs the number and makes that amount of grids
@@ -49,10 +62,6 @@ function gridMakingDiv() {
     grid.classList.add('gridMaking');
     divContainer.appendChild(grid);
     styleBorder();
-    
-    
-  //  document.querySelectorAll('.gridMaking').style.borderStyle = 'solid';
-  //  document.querySelectorAll('.gridMaking').style.padding = '20px';
 }
 
 //changing the style of each box
@@ -66,6 +75,8 @@ function styleBorder() {
     });
 }
 
+
+
 let totalBox = '';
 
 function promptNumbers(numCol, numRow, totalBox) {
@@ -76,8 +87,8 @@ function promptNumbers(numCol, numRow, totalBox) {
     if (numCol >= 100 || numRow >= 100) {
         alert("ERROR, please refresh.")
     } else {
-        let removing = begin();
-        removing.remove();
+        
+       
         totalBox = numCol * numRow;
         gridPrompt(totalBox);
     }
@@ -89,10 +100,11 @@ function promptNumbers(numCol, numRow, totalBox) {
 let buttAll = document.querySelectorAll('button');
 buttAll.forEach((button) => {
     button.addEventListener('click', () => {
-        
+        hiddenStyle();
         promptNumbers();
     });
 });
+
 
 function gridPrompt(totalBox) {
 
@@ -108,15 +120,12 @@ for (i = 0; i <= totalBox; i ++) {
 
 
 
-/*
-for (i = 0; i <= totalBox; i++) {
-        if (i === totalBox) {
-            console.log("The total amount of boxes = " + totalBox)
-        } else {
-            gridMakingDiv();
-        }
-    
-}*/
+
+
+
+document.addEventListener("load", begin());
+
+
 
 
 //have to ask how many columns and rows then mutilple and divide by columns so it makes a grid with all the numbers
