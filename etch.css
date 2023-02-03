@@ -1,0 +1,42 @@
+body {
+    background-color: aquamarine;
+}
+
+button {
+    display: flex;
+    width: 500px;
+    border-radius: 10px;
+    border: 5px solid black;
+    background-color: rgb(5, 87, 59);
+    color: aquamarine;
+    text-align: center;
+    padding: 20px 40px;
+    justify-content: center;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 30px;
+    
+    
+}
+.div1,
+.div2,
+.div3,
+.div4,
+.div5,
+.div6,
+.div7,
+.div8,
+.div9,
+.div10,
+.div11,
+.div12,
+.div13,
+.div14,
+.div15,
+.div16 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 20px;
+}
+#mouses:hover {
+    background-color: black;
+}
