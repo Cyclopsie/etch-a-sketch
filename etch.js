@@ -15,42 +15,27 @@ div.appendChild(divContainer);
     document.querySelector('.divContainer').style.margin = '50px';
     document.querySelector('.divContainer').style.border = '20px';
     
-
+//start page with 16x16 squares
 function begin() {
-for(s = 0; s <= 256; s++) {
-    if(s === 256) {
-        console.log("16x16");
-    } else {
-        gridB();
-    }   
-    document.querySelector('.divContainer').style.gridTemplateColumns = "repeat(16, 1fr)";
-}
+    for(s = 0; s <= 256; s++) {
+        if(s === 256) {
+            console.log("16x16");
+        } else {
+            gridMakingDiv();
+        }   
+      document.querySelector('.divContainer').style.gridTemplateColumns = "repeat(16, 1fr)";
+    }
 }
 
+//start of page
 begin();
 
-function gridB() {
-    startGrid = document.createElement('div');
-    startGrid.classList.add('gridB');
-    divContainer.appendChild(startGrid);
-    startBorder();
-}
-//changing the style of each box
-function startBorder() {
-    document.querySelectorAll('.gridB').forEach(el => {
-        el.style.borderStyle = 'solid';
-        el.style.padding = '20px';
-        el.style.color = 'black';
-        el.style.margin = '10px';
-        
-    });
-}
+//getting rid of the previous grid to make new grid
 function hiddenStyle() {
-    document.querySelectorAll('.gridB').forEach(el => {
+    document.querySelectorAll('.gridMaking').forEach(el => {
         el.style.display = 'none';
     });
 }
-
 
 //have to make a loop that inputs the number and makes that amount of grids
 //limit the number of squares to 100
@@ -61,7 +46,10 @@ function gridMakingDiv() {
     grid = document.createElement('div');
     grid.classList.add('gridMaking');
     divContainer.appendChild(grid);
+    
     styleBorder();
+    
+    
 }
 
 //changing the style of each box
@@ -69,33 +57,24 @@ function styleBorder() {
     document.querySelectorAll('.gridMaking').forEach(el => {
         el.style.borderStyle = 'solid';
         el.style.padding = '20px';
-        el.style.color = 'purple';
+        el.style.color = generateRandomColor();
         el.style.margin = '10px';
+        el.style.aspectRatio = "1/1";
+        
         
     });
 }
 
-
-
-let totalBox = '';
-
-function promptNumbers(numCol, numRow, totalBox) {
-    numCol = prompt("how many columns will you like?");
-    console.log("number of Columns = " + numCol);
-    numRow = prompt("how many ROWs will you like?");
-    console.log("number of Rows = " + numRow);
-    if (numCol >= 100 || numRow >= 100) {
-        alert("ERROR, please refresh.")
-    } else {
-        
-       
-        totalBox = numCol * numRow;
-        gridPrompt(totalBox);
-    }
-    console.log(numCol);
-    document.querySelector('.divContainer').style.gridTemplateColumns = "repeat("+numCol+", 1fr)";
+//random color .... sometimes doesn't generate a color...
+function generateRandomColor() {
+    let randomColor = '#'+(Math.floor(Math.random()*16777215));
+    //console.log(randomColor);
+    return randomColor
+    
 }
 
+let totalBox = '';
+//button press
 //assigning BUTTON
 let buttAll = document.querySelectorAll('button');
 buttAll.forEach((button) => {
@@ -105,30 +84,33 @@ buttAll.forEach((button) => {
     });
 });
 
-
-function gridPrompt(totalBox) {
-
-for (i = 0; i <= totalBox; i ++) {
-    if (i === totalBox) {
-        console.log("total box = " + totalBox)
+function promptNumbers(numCol, numRow, totalBox) {
+    numCol = prompt("How many COLUMNS?");
+    console.log("number of Columns = " + numCol);
+    numRow = prompt("How many ROWS?");
+    console.log("number of Rows = " + numRow);
+    if (numCol >= 100 || numRow >= 100) {
+        alert("ERROR, please refresh.")
     } else {
-        gridMakingDiv();
+        totalBox = numCol * numRow;
+        gridPrompt(totalBox);
+    }
+    console.log(numCol);
+    document.querySelector('.divContainer').style.gridTemplateColumns = "repeat("+numCol+", 1fr)";
+}
+
+//making the grid
+function gridPrompt(totalBox) {
+    for (i = 0; i <= totalBox; i ++) {
+        if (i === totalBox) {
+            console.log("total box = " + totalBox)
+        } else {
+            gridMakingDiv();
+            
+        }
     }
 }
 
-}
-
-
-
-
-
-
-document.addEventListener("load", begin());
-
-
-
-
-//have to ask how many columns and rows then mutilple and divide by columns so it makes a grid with all the numbers
 
 
 
@@ -152,22 +134,11 @@ function MakingDiv(name, words, bColor) {
     document.querySelector('.'+`${this.name}`).style.padding = '20px';
 
 
-    name.setAttribute('id', 'mouses');
-    //let divB = document.querySelectorAll('#mouses');
-    //document.addEventListener("mouseover", function() {
-     //   divB.style.backgroundColor = "black";
-     //   console.log(name);
-    //});
-}
-
-
-//random color .... sometimes doesn't generate a color...
-function generateRandomColor() {
-    let randomColor = '#'+(Math.floor(Math.random()*16777215));
-    //console.log(randomColor);
-    return randomColor
     
 }
+
+
+
 //numbering the boxes
 let num = 1;
 
@@ -187,6 +158,30 @@ const makingDiv13 = new MakingDiv(('div' + num), num++, generateRandomColor());
 const makingDiv14 = new MakingDiv(('div' + num), num++, generateRandomColor());
 const makingDiv15 = new MakingDiv(('div' + num), num++, generateRandomColor());
 const makingDiv16 = new MakingDiv(('div' + num), num++, generateRandomColor());
+
+//making new divs inside of the divContainer
+function gridB() {
+    startGrid = document.createElement('div');
+    startGrid.classList.add('gridB');
+    divContainer.appendChild(startGrid);
+    startBorder();
+}
+//changing the style of each box
+function startBorder() {
+    document.querySelectorAll('.gridB').forEach(el => {
+        el.style.borderStyle = 'solid';
+        el.style.padding = '20px';
+        el.style.color = 'black';
+        el.style.margin = '10px';
+        
+    });
+}
+
+
+
+
+
+
 
 */
 
